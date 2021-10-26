@@ -18,8 +18,6 @@
 		out.print("우편번호 : " + list.get(i).getZipcode()+"\t");
 		out.print("주소 : " + list.get(i).getAddr1()+"<br><br>");
 	}
-	
-
 %>
 
 </body>

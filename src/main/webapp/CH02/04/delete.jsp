@@ -13,6 +13,7 @@
 %>
 
 <%@page import="java.sql.*" %>
+
 <%
 	//드라이브적재
 	Class.forName("com.mysql.cj.jdbc.Driver");

@@ -8,20 +8,16 @@
 </head>
 <body>
 	<%@page import="java.sql.*" %>
-	<jsp:useBean id="memberDTO" class="CH03.memberDTO" scope="page"/>
-	<jsp:setProperty property="*" name="memberDTO"/>
+	<!-- bean을 이용해서 한번에 파라미터 전달하기 -->
+	<jsp:useBean id="memberDTO" class="CH03.memberDTO" scope="page" />
+	<jsp:setProperty name="memberDTO" property="*" /> <!-- 요청파라미터를 memberDTO로 전달 -->
 	<jsp:useBean id="memberDAO" class="CH03.memberDAO" scope="page"/>
-	<%
-		int result=memberDAO.memberJoin(memberDTO);
-		if(result==1)
-		{
-			out.println("계정가입성공");
-		}
-		else
-		{
-			out.println("계정가입실패");
-		}	
-	%>
 	
+	<%
+		int result=memberDAO.memberUpdate(memberDTO);
+		
+	%>
+
+
 </body>
 </html>

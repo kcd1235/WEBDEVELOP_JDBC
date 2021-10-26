@@ -11,24 +11,26 @@
 
 </head>
 <body>
-	<%
-		String email = request.getParameter("email");
-		String pwd = request.getParameter("pwd");
-	%>
-	<%@page import="CH03.memberDTO"%>
-	<jsp:useBean id="memberDAO" class="CH03.memberDAO" scope="page"/>
-	<%
-		memberDTO dto=new memberDTO();
-		if(dto==null)
-		{
-			%>
-				<script>
-					alert("계정조회실패");
-				</script>
+<%
+	String email = request.getParameter("email");
+	String pwd = request.getParameter("pwd");
+%>
+<jsp:useBean id="memberDAO" class="CH03.memberDAO" scope="page" />
+<%@page import="CH03.memberDTO" %>
+<%
+	memberDTO dto=memberDAO.memberSearch(email, pwd);  //0 :ID x , 1 = PW x , 2 = 성공
+	if(dto==null){
+		//ID가 없으면 입력page로 다시 이동
+		%>
+			<script>
+				alert("계정 조회 실패");
+				location.href="03memberSearchForm.jsp";
+			</script>
 		<%
-			response.sendRedirect("03memberSearchForm.jsp");
-		}
-	%>
+	}
+%>
+
+
 
 <div style="margin:100px auto; width:60%;">
         <h2 style="margin-bottom:20px;">회원정보 조회</h2>
@@ -51,7 +53,7 @@
             </div>
             <div class="col-12 ">
                 <label for="inputAddress " class="form-label ">Address 1</label>
-                <input type="text " class="form-control " id="inputAddress " name=addr1 value="<%=dto.getAddr1() %>">
+                <input type="text " class="form-control " id="inputAddress " name=addr1 value="<%=dto.getAddr1() %>" >
             </div>
             <div class="col-12 ">
                 <label for="inputAddress2 " class="form-label ">Address 2</label>
@@ -64,7 +66,7 @@
         </form>
     </div>
 
-
+	
 
 
 

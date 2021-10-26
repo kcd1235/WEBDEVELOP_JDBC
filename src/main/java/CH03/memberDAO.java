@@ -95,7 +95,7 @@ public class memberDAO {
 		}
 		finally
 		{
-			try{conn.close();}catch(Exception e){}
+			
 			try{pstmt.close();}catch(Exception e){}
 			try{rs.close();}catch(Exception e){}
 		}
@@ -168,35 +168,41 @@ public class memberDAO {
 	}
 	
 	//기능메서드,Delete
-	public int memberDelete(memberDTO dto)
+	public int memberDelete(String email,String pwd)
 	{
-		//성공 : 1, 실패 : 0
 		int result=0;
 		try
 		{
-			String sql="delete from member_tbl where email=?";
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getEmail());	//이메일
-			pstmt.setString(2, dto.getPwd());	//패스워드
-			pstmt.setInt(3, dto.getZipcode());	//우편번호
-			pstmt.setString(4, dto.getAddr1());	//주소1
-			pstmt.setString(5, dto.getAddr2());	//주소2
-			pstmt.setInt(6, 1);	//계정정보
+			memberDTO dbdto=memberSearch(email,pwd);
+
+			if(dbdto==null)
+			{
+				System.out.println("삭제실패");
+			}
+			else
+			{
+				if(dbdto.getPwd().equals(pwd))
+				{
+					pstmt=conn.prepareStatement("delete from member_tbl where email=?");
+					pstmt.setString(1,email);
+					result=pstmt.executeUpdate();
+				}
+				else
+				{
+					System.out.print("삭제실패(패스워드 불일치)");
+				}
+			}
 			
-			result=pstmt.executeUpdate();
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			e.printStackTrace();	
 		}
 		finally
 		{
-			try {
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			try{pstmt.close();}catch(Exception e){}
 		}
+		
 		return result;
 	}
 }

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<h2>조회ID입력</h2>
 	<form action="result.jsp">
 		이메일 : <input name="email"><br>

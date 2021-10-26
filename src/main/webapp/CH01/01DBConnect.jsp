@@ -12,7 +12,7 @@
 		//드라이브적재
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		System.out.println("Driver Loding Success!!");
-	
+		
 		//DB연동객체용 참조변수 선언
 		Connection conn=null;
 		PreparedStatement pstmt=null;

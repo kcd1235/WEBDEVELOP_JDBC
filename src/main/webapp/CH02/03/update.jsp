@@ -12,7 +12,6 @@
 <jsp:useBean id="memberDTO" class="CH02.memberDTO" scope="page" />
 <jsp:setProperty name="memberDTO" property="*" /> <!-- 요청파라미터를 memberDTO로 전달 -->
 
-
 <%
 	//드라이브적재
 	Class.forName("com.mysql.cj.jdbc.Driver");

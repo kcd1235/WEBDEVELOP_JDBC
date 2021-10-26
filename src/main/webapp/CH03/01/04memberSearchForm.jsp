@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:useBean id="memDAO" class="CH03.memberDAO" scope="page" />
-
-<%
-		
-%>
+	<h2>삭제 ID 입력</h2>
+	<form action="04delete.jsp">
+		이메일 : <input name=email><br>
+		패스워드 : <input type=password name=pwd ><br>
+		<input type=submit value=전송> 
+	</form>
 </body>
 </html>

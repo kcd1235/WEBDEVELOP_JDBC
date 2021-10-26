@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<%@page import="java.sql.*" %>
 	<%
 		String email=request.getParameter("email");

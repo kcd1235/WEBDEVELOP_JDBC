@@ -12,6 +12,7 @@
 	이메일 : <input name=email><br>
 	패스워드 : <input type=password name=pwd ><br>
 	<input type=submit value=전송> 
+	
 </form>
 </body>
 </html>

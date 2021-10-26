@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<%
 		String email=request.getParameter("email");
 		String pwd=request.getParameter("pwd");

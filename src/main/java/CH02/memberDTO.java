@@ -7,6 +7,7 @@ public class memberDTO {
 	private int zipcode;
 	private String addr1;
 	private String addr2;
+	
 	public String getEmail() {
 		return email;
 	}
